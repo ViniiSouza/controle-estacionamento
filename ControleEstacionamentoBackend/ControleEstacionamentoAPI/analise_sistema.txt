@@ -1,0 +1,57 @@
+Preços:
+
+- Metade do valor total quando o tempo total de permanência for igual ou inferior a 30 minutos (apenas na primeira hora, não se aplica em adicionais)
+- Há uma tolerância de 10 minutos por hora. 1:10 = valor de uma hora - 1:11 = valor de duas horas
+- Primeira hora é R$ 2
+- Hora adicional é R$ 1
+- Busca pela placa do veículo
+
+Vigência de preços:
+
+- Os preços tem vigências. O preço x pode durar de 05/10/2022 à 05/11/2022. Uma nova vigência pode existir para o dia 06/11/2022 em diante. Utilizar a vigência de preços atuais e permitir alterá-la e criar novas
+
+
+Tabelas:
+
+Carro:
+
+Id, Placa
+
+Registro:
+
+Id, HorarioEntrada, HorarioSaida, ValorHora, CarroId
+
+VigenciaPreco:
+
+Id, InicioVigencia, FimVigencia, ValorHora
+
+
+Endpoints:
+
+MarcarEntrada(POST):
+
+Endpoint que recebe a placa do carro e o horário de entrada, caso o carro não esteja cadastrado, cria o cadastro do carro e cria o registro, retornando o mesmo.
+
+MarcarSaida(PUT):
+
+Endpoint que recebe a placa do carro e o horário de saída, caso não haja um registro sem horário de entrada, retorna um erro, senão, preenche o horário de saída do registro e o retorna com o valor a pagar.
+
+BuscarRegistro(GET):
+
+Recebe o id do registro e retorna as informações do mesmo.
+
+ExcluiRegistro(DELETE):
+
+Recebe o id do registro e exclui o registro do banco.
+
+CriaVigencia(POST):
+
+Recebe data de início e fim da vigência, juntamente com o valor da hora e cria uma vigência no banco, caso já haja uma vigência dentro do prazo informado, retorna um erro.
+
+AlteraVigencia(PUT):
+
+Recebe data de início e fim da vigência, juntamente com o valor da hora e o id e altera os dados da vigência informada, caso já haja uma vigência dentro do prazo informado, retorna um erro.
+
+ExcluiVigencia(DELETE):
+
+Recebe o id da vigência e a exclui do banco.
