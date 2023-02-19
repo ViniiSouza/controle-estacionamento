@@ -1,9 +1,7 @@
 ﻿namespace ControleEstacionamento.Domain.Entidades
 {
-    public class VigenciaPreco
+    public class VigenciaPreco : EntidadeBase
     {
-        public int Id { get; set; }
-
         public DateTime InicioVigencia { get; set; }
 
         public DateTime FimVigencia { get; set; }

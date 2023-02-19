@@ -1,9 +1,7 @@
 ﻿namespace ControleEstacionamento.Domain.Entidades
 {
-    public class Carro
+    public class Carro : EntidadeBase
     {
-        public int Id { get; set; }
-
         public string Placa { get; set; }
     }
 }

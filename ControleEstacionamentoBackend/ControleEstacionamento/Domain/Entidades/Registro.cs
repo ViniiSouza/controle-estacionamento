@@ -1,9 +1,7 @@
 ﻿namespace ControleEstacionamento.Domain.Entidades
 {
-    public class Registro
+    public class Registro : EntidadeBase
     {
-        public int Id { get; set; }
-
         public DateTime HorarioEntrada { get; set; }
 
         public DateTime? HorarioSaida { get; set; }
