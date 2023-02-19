@@ -6,7 +6,7 @@ namespace ControleEstacionamento.Infra.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : EntidadeBase
     {
-        private readonly ControleEstacionamentoDbContext _context;
+        internal readonly ControleEstacionamentoDbContext _context;
 
         public Repository(ControleEstacionamentoDbContext context)
         {
