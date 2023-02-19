@@ -1,6 +1,6 @@
 ﻿using ControleEstacionamento.Domain.Entidades;
 
-namespace ControleEstacionamento.Domain.Interfaces
+namespace ControleEstacionamento.Domain.Interfaces.Repositories
 {
     public interface IRepository<T> where T : EntidadeBase
     {
