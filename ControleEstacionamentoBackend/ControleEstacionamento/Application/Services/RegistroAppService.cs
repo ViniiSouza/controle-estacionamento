@@ -7,7 +7,7 @@ using ControleEstacionamento.Infra.Data;
 
 namespace ControleEstacionamento.Application.Services
 {
-    public class RegistroAppService : BaseAppService<Registro, RegistroDTO>, IBaseAppService<Registro, RegistroDTO>
+    public class RegistroAppService : BaseAppService<Registro, RegistroDTO>, IRegistroAppService
     {
         private readonly ICarroRepository _carroRepository;
 
