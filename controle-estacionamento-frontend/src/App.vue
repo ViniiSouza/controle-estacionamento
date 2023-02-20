@@ -1,8 +1,11 @@
 <script>
 import Header from "./components/header/Header.vue";
+import Grid from "./components/grid/Grid.vue";
+
 export default {
   components: {
     Header,
+    Grid,
   },
 }
 </script>
@@ -10,6 +13,7 @@ export default {
 <template>
   <div>
     <Header />
+    <Grid />
   </div>
 </template>
 
