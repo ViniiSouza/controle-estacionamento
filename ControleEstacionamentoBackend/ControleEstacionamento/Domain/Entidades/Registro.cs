@@ -8,6 +8,8 @@
 
         public decimal ValorHora { get; set; }
 
+        public decimal? ValorTotal { get; set; }
+
         public Carro Carro { get; set; }
 
         public int CarroId { get; set; }
