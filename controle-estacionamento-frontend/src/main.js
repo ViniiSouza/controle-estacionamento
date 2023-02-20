@@ -3,4 +3,9 @@ import App from './App.vue'
 
 import './assets/main.css'
 
-createApp(App).mount('#app')
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
+
+const Vue = createApp(App)
+
+Vue.mount('#app')

@@ -12,7 +12,7 @@ export default {
 <style>
 .header {
     width: 100%;
-    background-color: rgb(11, 2, 94);
+    background-color: rgb(19, 0, 126);
     height: 10vh;
 }
 .header-image{
