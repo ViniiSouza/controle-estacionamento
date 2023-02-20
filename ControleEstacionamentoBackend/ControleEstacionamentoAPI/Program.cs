@@ -23,6 +23,7 @@ builder.Services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork));
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient(typeof(ICarroRepository), typeof(CarroRepository));
 builder.Services.AddTransient(typeof(IRegistroRepository), typeof(RegistroRepository));
+builder.Services.AddTransient(typeof(IVigenciaPrecoRepository), typeof(VigenciaPrecoRepository));
 builder.Services.AddTransient(typeof(IBaseAppService<,>), typeof(BaseAppService<,>));
 builder.Services.AddTransient(typeof(IRegistroAppService), typeof(RegistroAppService));
 

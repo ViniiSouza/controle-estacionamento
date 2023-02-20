@@ -4,7 +4,7 @@
     {
         public int? Id { get; set; }
 
-        public string? PlacaCarro { get; set; }
+        public string PlacaCarro { get; set; }
 
         public string? HorarioEntrada { get; set; }
 
@@ -14,7 +14,7 @@
 
         public string? TempoCobrado { get; set; }
 
-        public string ValorHora { get; set; }
+        public string? ValorHora { get; set; }
 
         public string? ValorTotal { get; set; }
 

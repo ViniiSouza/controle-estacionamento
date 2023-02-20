@@ -2,8 +2,8 @@
 
 namespace ControleEstacionamento.Domain.Interfaces.Repositories
 {
-    public interface IRegistroRepository : IRepository<Registro>
+    public interface IVigenciaPrecoRepository : IRepository<VigenciaPreco>
     {
-        Registro GetPorPlacaCarroSemHoraSaida(string placaCarro);
+        VigenciaPreco GetPorData(DateTime vigencia);
     }
 }

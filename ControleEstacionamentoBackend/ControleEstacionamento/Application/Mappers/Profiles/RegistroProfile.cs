@@ -14,7 +14,8 @@ namespace ControleEstacionamento.Application.Mappers.Profiles
                 .ForMember(dest => dest.TempoCobrado, opt => opt.MapFrom(src => GetTempoCobrado(src.ValorHora, src.ValorTotal)))
                 .ForMember(dest => dest.ValorHora, opt => opt.MapFrom(src => src.ValorHora.ToString("0.00")))
                 .ForMember(dest => dest.ValorTotal, opt => opt.MapFrom(src => src.ValorTotal.HasValue ? src.ValorTotal.Value.ToString("0.00") : ""))
-                .ReverseMap();
+                .ReverseMap()
+                .ForPath(dest => dest.Carro.Placa, opt => opt.MapFrom(src => src.PlacaCarro.Replace("-", "").ToUpper()));
         }
 
         public static string GetTempoCobrado(decimal valorHora, decimal? valorTotal)

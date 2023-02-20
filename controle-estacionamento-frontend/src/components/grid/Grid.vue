@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="grid">
+      <div class="text-center">
+        <h5>{{ horarioAtual }}</h5>
+      </div>
       <div class="d-flex justify-content-end">
         <button
           class="btn btn-outline-success mx-2 mb-2"
@@ -47,27 +50,33 @@
       <template v-slot:header
         >Marcar {{ marcarEntrada ? "entrada" : "saída" }}</template
       >
-      <template template v-slot:footer>
-        <button class="btn btn-light" @click="fecharModal">Sair</button>
-        <button class="btn btn-success">Marcar</button>
-      </template>
       <template template v-slot:default>
         <b-form-group
           label="Placa do carro"
-          description="Ex: ABC-1234"
+          description="Ex: ABC-1234 ou ABC-1D34"
           label-for="input-registro"
           :state="placaValida"
           :validated="false"
           :invalid-feedback="invalidFeedback"
         >
           <b-form-input
-            v-model="placaCarro"
+            v-model="registro.placaCarro"
             id="input-registro"
             :state="placaValida"
             maxlength="8"
           >
           </b-form-input>
         </b-form-group>
+      </template>
+      <template template v-slot:footer>
+        <button class="btn btn-light" @click="fecharModal">Sair</button>
+        <button
+          class="btn btn-success"
+          @click="registrarPonto"
+          :disabled="!permitirMarcar"
+        >
+          Marcar
+        </button>
       </template>
     </b-modal>
   </div>
@@ -112,11 +121,6 @@ import api from "./services/api";
 import { computed, ref } from "vue";
 
 export default {
-  created() {
-    api.getAll().then((payload) => {
-      this.data = payload.data;
-    });
-  },
   setup() {
     const columns = ref([
       { text: "Placa", cols: "1" },
@@ -129,36 +133,120 @@ export default {
     ]);
     const data = ref([]);
 
-    const placaCarro = ref("");
+    const buscarDados = () =>
+      api.getAll().then((payload) => {
+        data.value = payload.data;
+      });
 
-    const placaValida = computed(() => placaCarro.value.length >= 8);
+    buscarDados();
+
+    const checkZero = (data) => {
+      if (data.length == 1) {
+        data = "0" + data;
+      }
+      return data;
+    };
+
+    const gerarHorario = () => {
+      var today = new Date();
+      var day = today.getDate() + "";
+      var month = today.getMonth() + 1 + "";
+      var year = today.getFullYear() + "";
+      var hour = today.getHours() + "";
+      var minutes = today.getMinutes() + "";
+      var seconds = today.getSeconds() + "";
+
+      day = checkZero(day);
+      month = checkZero(month);
+      year = checkZero(year);
+      hour = checkZero(hour);
+      minutes = checkZero(minutes);
+      seconds = checkZero(seconds);
+
+      return (
+        day +
+        "/" +
+        month +
+        "/" +
+        year +
+        " " +
+        hour +
+        ":" +
+        minutes +
+        ":" +
+        seconds
+      );
+    };
+
+    let horarioAtual = ref(gerarHorario());
+
+    setInterval(() => {
+      horarioAtual.value = gerarHorario();
+    }, 1000);
+
+    const registro = ref({ placaCarro: "" });
+
+    const placaValida = computed(() => registro.value.placaCarro.length >= 8);
 
     const invalidFeedback = computed(() =>
-      placaCarro.value.length > 0 ? 'Placa incompleta' : 'Informe a placa do carro'
-    )
+      registro.value.placaCarro.length > 0
+        ? "Placa incompleta"
+        : "Informe a placa do carro"
+    );
 
     const marcarEntrada = ref(true);
+
+    const permitirMarcar = ref(true);
 
     const modalAberta = ref(false);
 
     const abrirModal = (entrada) => {
-      placaCarro.value = "";
+      registro.value.placaCarro = "";
       modalAberta.value = true;
       marcarEntrada.value = entrada;
     };
 
     const fecharModal = () => (modalAberta.value = false);
 
+    const registrarPonto = () => {
+      if (placaValida.value) {
+        permitirMarcar.value = false;
+        if (marcarEntrada.value) {
+          registro.value.horarioEntrada = gerarHorario();
+          registro.value.horarioSaida = null;
+        } else {
+          registro.value.horarioSaida = gerarHorario();
+          registro.value.horarioEntrada = null;
+        }
+        const request = marcarEntrada.value
+          ? api.marcarEntrada(registro.value)
+          : api.marcarSaida(registro.value);
+        request
+          .then(() => {
+            buscarDados();
+            permitirMarcar.value = true;
+            fecharModal();
+          })
+          .catch((err) => {
+            alert(err.message);
+            permitirMarcar.value = true;
+          });
+      }
+    };
+
     return {
       columns,
       data,
-      placaCarro,
+      horarioAtual,
+      registro,
       placaValida,
       invalidFeedback,
       marcarEntrada,
       modalAberta,
+      permitirMarcar,
       abrirModal,
       fecharModal,
+      registrarPonto,
     };
   },
 };

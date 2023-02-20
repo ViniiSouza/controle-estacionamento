@@ -15,5 +15,11 @@ namespace ControleEstacionamento.Infra.Data.Repositories
         {
             return _context.Set<Registro>().Include(include => include.Carro);
         }
+
+        public Registro GetPorPlacaCarroSemHoraSaida(string placaCarro)
+        {
+            return _context.Set<Registro>().Where(where => where.Carro.Placa == placaCarro && where.HorarioSaida == null)
+                .Include(include => include.Carro).FirstOrDefault();
+        }
     }
 }
