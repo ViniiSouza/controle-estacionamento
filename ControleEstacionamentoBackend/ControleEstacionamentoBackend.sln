@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleEstacionamentoAPI", "ControleEstacionamentoAPI\ControleEstacionamentoAPI.csproj", "{D8E5102A-2154-4E11-A56B-83D615140BBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstacionamento", "ControleEstacionamento\ControleEstacionamento.csproj", "{0D2D3ABE-0D8E-4F6C-9973-68987959B748}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8E5102A-2154-4E11-A56B-83D615140BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8E5102A-2154-4E11-A56B-83D615140BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8E5102A-2154-4E11-A56B-83D615140BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8E5102A-2154-4E11-A56B-83D615140BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D2D3ABE-0D8E-4F6C-9973-68987959B748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D2D3ABE-0D8E-4F6C-9973-68987959B748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D2D3ABE-0D8E-4F6C-9973-68987959B748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D2D3ABE-0D8E-4F6C-9973-68987959B748}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4D422BE-6C93-4C2D-9AB1-BA950208DB41}
+	EndGlobalSection
+EndGlobal
