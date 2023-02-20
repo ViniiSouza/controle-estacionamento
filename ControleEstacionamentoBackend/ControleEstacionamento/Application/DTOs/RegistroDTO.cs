@@ -10,7 +10,13 @@
 
         public string? HorarioSaida { get; set; }
 
-        public decimal ValorHora { get; set; }
+        public string? Duracao { get; set; }
+
+        public string? TempoCobrado { get; set; }
+
+        public string ValorHora { get; set; }
+
+        public string? ValorTotal { get; set; }
 
         public int? CarroId { get; set; }
     }

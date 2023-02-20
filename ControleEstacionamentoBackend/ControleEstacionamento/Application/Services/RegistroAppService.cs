@@ -11,7 +11,7 @@ namespace ControleEstacionamento.Application.Services
     {
         private readonly ICarroRepository _carroRepository;
 
-        public RegistroAppService(IUnitOfWork unitOfWork, IRepository<Registro> repository, IMapper mapper, ICarroRepository carroRepository) : base(unitOfWork, repository, mapper)
+        public RegistroAppService(IUnitOfWork unitOfWork, IRegistroRepository repository, IMapper mapper, ICarroRepository carroRepository) : base(unitOfWork, repository, mapper)
         {
             _carroRepository = carroRepository;
         }
