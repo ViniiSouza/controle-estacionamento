@@ -1,5 +1,4 @@
 ﻿using ControleEstacionamento.Application.DTOs;
-using ControleEstacionamento.Domain.Entidades;
 using ControleEstacionamento.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
